@@ -1,0 +1,14 @@
+ .custom-btn {
+     background-color: var(--darkgreen);
+     color: white;
+     padding: 10px 15px;
+     border: none;
+     border-radius: 5px;
+     cursor: pointer;
+     transition: background-color 0.3s ease;
+     margin-right: 10px;
+ }
+
+ .custom-btn:hover {
+     background-color: var(--lightgreen);
+ }

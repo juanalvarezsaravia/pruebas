@@ -1,0 +1,12 @@
+.Footer {
+    background-color: var(--verde);
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+    font-size: 16px;
+}
+
+.Footer h3 {
+    margin: 0;
+    font-weight: bold;
+}

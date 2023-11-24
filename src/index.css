@@ -1,0 +1,91 @@
+:root {
+  --verde: rgb(5, 255, 5);
+  --darkgreen: #47925e;
+  --lightgreen: #09f03b;
+  --yellow: #eff304;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  color: black;
+}
+
+body {
+  box-sizing: border-box;
+  background-color: greenyellow;
+  height: 100%;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+input {
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 5px;
+}
+
+.AppContainer {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+}
+
+@media only screen and (max-width: 767px) {
+  header {
+    flex-direction: column;
+    padding: 10px 0;
+    height: auto;
+    align-items: center;
+  }
+
+  .AppContainer {
+    padding: 0 10px;
+  }
+
+  .Details,
+  .Search,
+  .Results,
+  .About,
+  .Contact {
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .SignUp,
+  .Login,
+  .Contact,
+  .About {
+    width: 90%;
+    margin: 20px auto;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  .Footer h3 {
+    font-size: 14px;
+  }
+
+  button,
+  input {
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+  }
+
+}
