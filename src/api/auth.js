@@ -36,7 +36,7 @@ export function login({ email, password }) {
     });
 }
 
-export function Login({ email, password, name }) {
+export function register({ email, password, name }) {
     return new Promise(async (resolve, reject) => {
         try {
             const path = `${API_URL}/user`;
@@ -65,4 +65,3 @@ export function Login({ email, password, name }) {
         }
     });
 }
-

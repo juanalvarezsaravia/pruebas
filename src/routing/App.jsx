@@ -19,8 +19,8 @@ export const queryClient = new QueryClient();
 function App() {
   return (
     <AuthProvider>
-      <QueryClientProvider client={queryClient}>
-        <SearchProvider>
+      <SearchProvider>
+        <QueryClientProvider client={queryClient}>
           <Router>
             <div className='AppContainer'>
               <Header />
@@ -42,8 +42,8 @@ function App() {
               <Footer />
             </div>
           </Router>
-        </SearchProvider>
-      </QueryClientProvider>
+        </QueryClientProvider>
+      </SearchProvider>
     </AuthProvider>
   );
 }

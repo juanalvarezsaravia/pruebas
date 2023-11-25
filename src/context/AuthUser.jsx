@@ -9,10 +9,6 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState();
 	const [isLoading, setIsLoading] = useState(true);
-	const [results, setResults] = useState([]);
-	const [language, setLanguage] = useState('');
-	const [sortBy, setSortBy] = useState('');
-
 
 	useEffect(() => {
 		const interval = setInterval(async () => {

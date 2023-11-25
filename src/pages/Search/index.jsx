@@ -1,8 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { AuthProvider } from '../context/AuthUser';
+import { AuthProvider } from '../../context/AuthUser';
 import Button from '../../components/Button';
+import { SearchContext } from '../../SearchContext';
 import "./Search.css";
 
 const Search = () => {

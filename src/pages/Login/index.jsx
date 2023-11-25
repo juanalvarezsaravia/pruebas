@@ -1,18 +1,19 @@
 import React from 'react';
 import TextField from '@mui/material/TextField';
 import { useNavigate } from 'react-router-dom';
-import "./Login.css";
+
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 import { useState } from 'react';
-import { login } from '../api/auth';
+import { login } from '../../api/auth';
+import "./Login.css";
 
 const Login = () => {
 
     const [formState, setFormState] = useState({
-        email: 'fedePelanda@email.com',
-        password: '123445678',
+        email: '',
+        password: '',
     });
 
     const navigate = useNavigate();
@@ -49,7 +50,7 @@ const Login = () => {
                     />
                     <TextField
                         label="Contraseña"
-                        name="email"
+                        name="password"
                         value={formState.password}
                         required
                         fullWidth
@@ -59,7 +60,7 @@ const Login = () => {
 
                     <Button onClick={onLoginButtonClick} disabled={isLoading} variant="contained" color="success">{isLoading ? 'Cargando...' : 'Iniciar Sesión'}</Button>
                 </div>
-                <Link to="/signUp">
+                <Link to="/SignUp">
                     <span >
                         Crea una cuenta
                     </span>
