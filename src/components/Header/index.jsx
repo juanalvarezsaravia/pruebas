@@ -11,7 +11,7 @@ const Header = () => {
             <h1>Buscador GitHub</h1>
             <nav>
                 <Button onClick={() => navigate('/login')}> Iniciar sesion</Button>
-                <Button onClick={() => navigate('/signUp')}> Registrarse</Button>
+                <Button onClick={() => navigate('/register')}> Registrarse</Button>
             </nav>
         </header>
     );
