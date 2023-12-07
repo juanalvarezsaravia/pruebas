@@ -60,7 +60,7 @@ const Login = () => {
 
                     <Button onClick={onLoginButtonClick} disabled={isLoading} variant="contained" color="success">{isLoading ? 'Cargando...' : 'Iniciar Sesión'}</Button>
                 </div>
-                <Link to="/SignUp">
+                <Link to="/register">
                     <span >
                         Crea una cuenta
                     </span>

@@ -9,10 +9,7 @@ const Header = () => {
     return (
         <header className="header">
             <h1>Buscador GitHub</h1>
-            <nav>
-                <Button onClick={() => navigate('/login')}> Iniciar sesion</Button>
-                <Button onClick={() => navigate('/register')}> Registrarse</Button>
-            </nav>
+
         </header>
     );
 };
