@@ -1,16 +1,16 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { AuthProvider } from '../../context/AuthUser';
+import { AuthContext } from '../../context/AuthUser';
 import Button from '../../components/Button';
-import { SearchContext } from '../../SearchContext';
 import "./Search.css";
 
 const Search = () => {
 
     const [username, setUsername] = useState('');
     const navigate = useNavigate();
-    const { setResults, language, setLanguage, sortBy, setSortBy } = useContext(SearchContext);
+    const { setResults, language, setLanguage, sortBy, setSortBy } = useContext(AuthContext);
+
 
     const handleSearch = async () => {
         try {

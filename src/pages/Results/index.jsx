@@ -1,15 +1,15 @@
 import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { AuthProvider } from '../../context/AuthUser';
+import { AuthContext } from '../../context/AuthUser';
 import Button from '../../components/Button';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import "./Results.css";
-import { SearchContext } from '../../SearchContext';
+
 
 const Results = () => {
-    const { results } = useContext(SearchContext);
+    const { results } = useContext(AuthContext);
     const navigate = useNavigate();
     const [page, setPage] = useState(1);
     const itemsPerPage = 10;

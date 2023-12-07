@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { SearchProvider } from '../SearchContext';
 import Search from "../pages/Search";
 import Results from '../pages/Results';
 import Details from '../pages/Details';
@@ -19,7 +18,6 @@ export const queryClient = new QueryClient();
 function App() {
   return (
     <AuthProvider>
-      <SearchProvider>
         <QueryClientProvider client={queryClient}>
           <Router>
             <div className='AppContainer'>
@@ -43,7 +41,7 @@ function App() {
             </div>
           </Router>
         </QueryClientProvider>
-      </SearchProvider>
+      
     </AuthProvider>
   );
 }

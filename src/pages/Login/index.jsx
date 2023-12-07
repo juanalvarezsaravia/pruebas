@@ -18,10 +18,10 @@ const Login = () => {
 
     const navigate = useNavigate();
 
-    const { mutate, isLoading } = useMutation({
-        mutationFn: login,
-        onSuccess: () => navigate('/'),
-    });
+   const { mutate, isLoading } = useMutation({
+		mutationFn: login,
+		onSuccess: () => navigate('/'),
+	});
 
     const handleChange = ({ target }) => {
         setFormState((prevState) => ({
