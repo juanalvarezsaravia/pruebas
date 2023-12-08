@@ -73,7 +73,7 @@ const SignUp = () => {
 				{isLoading ? 'Cargando...' : 'Crear cuenta'}
 			</Button>
 
-			<Link to="/register">
+			<Link to="/login">
 				<span>
 					Iniciar sesión
 				</span>

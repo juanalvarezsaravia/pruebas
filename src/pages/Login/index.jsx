@@ -1,7 +1,6 @@
 import React from 'react';
 import TextField from '@mui/material/TextField';
 import { useNavigate } from 'react-router-dom';
-
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
@@ -18,10 +17,10 @@ const Login = () => {
 
     const navigate = useNavigate();
 
-   const { mutate, isLoading } = useMutation({
-		mutationFn: login,
-		onSuccess: () => navigate('/'),
-	});
+    const { mutate, isLoading } = useMutation({
+        mutationFn: login,
+        onSuccess: () => navigate('/'),
+    });
 
     const handleChange = ({ target }) => {
         setFormState((prevState) => ({

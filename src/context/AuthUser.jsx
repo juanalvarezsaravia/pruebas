@@ -9,9 +9,6 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState();
 	const [isLoading, setIsLoading] = useState(true);
-	const [results, setResults] = useState([]);
-    const [language, setLanguage] = useState('');
-    const [sortBy, setSortBy] = useState('');
 
 	useEffect(() => {
 		const interval = setInterval(async () => {
@@ -36,9 +33,10 @@ export const AuthProvider = ({ children }) => {
 
 	return (
 		<AuthContext.Provider
-			value={{ user, isAuthenticated: !!user, isLoading, results, setResults, language, setLanguage, sortBy, setSortBy}}
+			value={{ user, isAuthenticated: !!user, isLoading }}
 		>
 			{children}
 		</AuthContext.Provider>
 	);
 };
+
