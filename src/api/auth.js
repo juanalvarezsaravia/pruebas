@@ -1,6 +1,7 @@
 import { STORAGE } from '../helpers/storage';
 import { USER_STORAGE_KEY } from '../constants/storage-keys';
 import { API_URL } from './config';
+import { CircularProgress, Fab } from '@mui/material';
 
 export function login({ email, password }) {
     return new Promise(async (resolve, reject) => {
@@ -25,6 +26,8 @@ export function login({ email, password }) {
                 ...result,
                 expiration_date: new Date().getTime() + oneDay,
             };
+
+            window.dispatchEvent(new CustomEvent('login', { detail: body }));
 
             STORAGE.set(USER_STORAGE_KEY, body);
 
