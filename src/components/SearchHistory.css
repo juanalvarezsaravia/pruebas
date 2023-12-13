@@ -1,0 +1,65 @@
+/* components/SearchHistory.css */
+
+.historial-container {
+  max-width: 300px;
+  margin: 20px auto;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.historial-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.historial-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  padding: 8px;
+  border: 1px solid #eee;
+  background-color: #f8f8f8;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.historial-item:hover {
+  background-color: #e0e0e0;
+}
+
+.historial-texto {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.historial-fecha {
+  color: #555;
+  font-size: 12px;
+}
+
+.borrar-elemento {
+  cursor: pointer;
+  color: #dc3545;
+  transition: color 0.3s;
+}
+
+.borrar-elemento:hover {
+  color: #721c24;
+}
+
+.borrar-historial {
+  cursor: pointer;
+  margin-left: 5px;
+  color: #dc3545;
+  transition: color 0.3s;
+}
+
+.borrar-historial:hover {
+  color: #721c24;
+}
