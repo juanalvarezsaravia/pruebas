@@ -9,9 +9,9 @@ import { setSearch } from '../../api/search';
 
 const Search = () => {
   const [username, setUsername] = useState('');
-  const [searchType, setSearchType] = useState('repositories'); // New state for search type
+  
   const navigate = useNavigate();
-  const { setResults, language, setLanguage, sortBy, setSortBy, historial, setHistorial, refresh } = useContext(SearchContext);
+  const { setResults, language, setLanguage, sortBy, setSortBy, historial, setHistorial, refresh , searchType, setSearchType } = useContext(SearchContext);
 
   const handleSearch = async () => {
     try {
@@ -37,7 +37,7 @@ const Search = () => {
           searchType,
           sortBy
         };
-        setSearch({ data: body, id: Date.now() })
+        setSearch({ data: body })
         refresh();
       }
 

@@ -9,6 +9,7 @@ export const SearchProvider = ({ children }) => {
   const [sortBy, setSortBy] = useState('');
   const [historial, setHistorial] = useState([]);
   const [resultsCount, setResultsCount] = useState([]); // Agregar estado para resultsCount
+  const [searchType, setSearchType] = useState('repositories'); // New state for search type
 
 
   // Definir la función getSearches
@@ -42,6 +43,8 @@ export const SearchProvider = ({ children }) => {
         setHistorial,
         resultsCount, // Agregar resultsCount al contexto
         setResultsCount, // Agregar setResultsCount al contexto
+        searchType, 
+        setSearchType,
       }}
     >
       {children}
