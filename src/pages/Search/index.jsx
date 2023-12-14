@@ -5,12 +5,13 @@ import Button from '../../components/Button';
 import { SearchContext } from '../../SearchContext';
 import SearchHistory from '../../components/SearchHistory';
 import './Search.css';
+import { setSearch } from '../../api/search';
 
 const Search = () => {
   const [username, setUsername] = useState('');
   const [searchType, setSearchType] = useState('repositories'); // New state for search type
   const navigate = useNavigate();
-  const { setResults, language, setLanguage, sortBy, setSortBy, historial, setHistorial } = useContext(SearchContext);
+  const { setResults, language, setLanguage, sortBy, setSortBy, historial, setHistorial, refresh } = useContext(SearchContext);
 
   const handleSearch = async () => {
     try {
@@ -28,13 +29,22 @@ const Search = () => {
       const response = await axios.get(query);
       const results = response.data.items;
 
-      if (results.length > 0 && !historial.includes(username)) {
-        setHistorial(prevHistorial => [...prevHistorial, username]);
+      if (results.length > 0) {
+        const body = {
+          results,
+          username,
+          language,
+          searchType,
+          sortBy
+        };
+        setSearch({ data: body, id: Date.now() })
+        refresh();
       }
 
       setResults(results);
       navigate(`/results`);
     } catch (error) {
+      console.log(error)
       alert('An error occurred.');
     }
   };

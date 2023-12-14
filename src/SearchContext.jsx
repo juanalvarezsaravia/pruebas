@@ -1,5 +1,5 @@
 // SearchContext.jsx
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
 export const SearchContext = createContext();
 
@@ -10,9 +10,28 @@ export const SearchProvider = ({ children }) => {
   const [historial, setHistorial] = useState([]);
   const [resultsCount, setResultsCount] = useState([]); // Agregar estado para resultsCount
 
+
+  // Definir la función getSearches
+  async function getSearches() {
+    // Aquí va tu lógica para obtener las búsquedas
+  }
+
+  useEffect(() => {
+    getSearches().then((data) => {
+      setHistorial(data)
+    })
+  }, [])
+
+  const refresh = () => {
+    getSearches().then((data) => {
+      setHistorial(data)
+    });
+  }
+
   return (
     <SearchContext.Provider
       value={{
+        refresh,
         results,
         setResults,
         language,

@@ -10,16 +10,11 @@ const formatDate = (date) => {
 };
 
 const SearchHistory = () => {
-  const { historial, setHistorial, setResults } = useContext(SearchContext);
+  const { historial, setHistorial, refresh } = useContext(SearchContext);
 
-  const handleBorrarElemento = (index) => {
-    const term = historial[index];
-    const nuevoHistorial = [...historial];
-    nuevoHistorial.splice(index, 1);
-    setHistorial(nuevoHistorial);
-
-    // Filtrar los resultados y mantener solo aquellos que no coinciden con el término borrado
-    setResults((prevResults) => prevResults.filter((result) => result !== term));
+  const handleBorrarElemento = async (id) => {
+    await deleteSearch({ id })
+    refresh();
   };
 
   const handleBorrarTodo = () => {
@@ -31,14 +26,14 @@ const SearchHistory = () => {
     <div className="historial-container">
       <h2>
         Historial de Búsquedas
-        {historial.length > 0 && (
+        {historial?.length > 0 && (
           <span className="borrar-historial" onClick={handleBorrarTodo}>
             <FaTrash />
           </span>
         )}
       </h2>
       <ul className="historial-list">
-        {historial.map((item, index) => (
+        {historial?.map((item, index) => (
           <li key={index} className="historial-item">
             <div>
               <span className="historial-texto" onClick={() => setResults([item])}>

@@ -8,7 +8,7 @@ import "./Results.css";
 import { SearchContext } from '../../SearchContext';
 
 const Results = () => {
-    const { results } = useContext(SearchContext);
+    const { results, SearchType = 'user' } = useContext(SearchContext);
     const navigate = useNavigate();
     const [page, setPage] = useState(1);
     const itemsPerPage = 10;
@@ -16,11 +16,14 @@ const Results = () => {
 
     const [searchTerm, setSearchTerm] = useState('');
 
+
+
     const paginatedResults = results.slice((page - 1) * itemsPerPage, page * itemsPerPage);
 
+    const propertyName = SearchType === 'repositories' ? 'name' : 'login';
 
     const filteredResults = searchTerm
-        ? results.filter(repo => repo.name.includes(searchTerm))
+        ? results.filter(repo => repo[propertyName]?.includes(searchTerm))
         : paginatedResults;
 
     if (!results || results.length === 0) {
@@ -56,7 +59,7 @@ const Results = () => {
             <ul>
                 {filteredResults.map((result) => (
                     <li key={result.id}>
-                        <Link to={`/details/${result.id}`}>{result.name}</Link>
+                        <Link to={`/details/${result.id}`}>{result.propertyName}</Link>
                     </li>
                 ))}
             </ul>

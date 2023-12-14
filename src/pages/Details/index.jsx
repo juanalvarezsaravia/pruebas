@@ -15,6 +15,7 @@ const Details = () => {
                 const response = await axios.get(`https://api.github.com/repositories/${id}`);
                 setRepoDetails(response.data);
             } catch (error) {
+                console.error(error);
                 alert('A ocurrido un error.');
             }
         };
