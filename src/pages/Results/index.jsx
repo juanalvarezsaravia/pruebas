@@ -39,12 +39,11 @@ const Results = () => {
         <div className='Results'>
             <h2>RESULTADOS DE BUSQUEDA</h2>
 
-            {results[0] && (
+            {results[0]?.owner?.avatar_url && (
                 <div className="single-avatar">
                     <img src={results[0].owner.avatar_url} alt={`${results[0].owner.login}'s avatar`} className="avatar" />
                 </div>
             )}
-
 
             <input
                 type="text"

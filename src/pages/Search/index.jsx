@@ -1,39 +1,35 @@
-// pages/Search.jsx
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Button from '../../components/Button';
 import { SearchContext } from '../../SearchContext';
-import SearchHistory from '../../components/SearchHistory'; // Ajusta la ruta según tu estructura
+import SearchHistory from '../../components/SearchHistory';
 import './Search.css';
 
 const Search = () => {
   const [username, setUsername] = useState('');
+  const [searchType, setSearchType] = useState('repositories'); // New state for search type
   const navigate = useNavigate();
   const { setResults, language, setLanguage, sortBy, setSortBy, historial, setHistorial } = useContext(SearchContext);
 
   const handleSearch = async () => {
     try {
-      let query = `https://api.github.com/search/repositories?q=`;
+      let baseUrl = `https://api.github.com/search/`;
+      let query = `${baseUrl}${searchType}?q=${username}`;
 
-      if (username) {
-        query += `user:${username}+`;
+      if (language && searchType === 'repositories') {
+        query += `+language:${language}`;
       }
 
-      if (language) {
-        query += `language:${language}+`;
-      }
-
-      if (sortBy) {
+      if (sortBy && searchType === 'repositories') {
         query += `&sort=${sortBy}`;
       }
 
       const response = await axios.get(query);
       const results = response.data.items;
 
-      // Actualizar el historial solo si hay resultados
       if (results.length > 0 && !historial.includes(username)) {
-        setHistorial((prevHistorial) => [...prevHistorial, username]);
+        setHistorial(prevHistorial => [...prevHistorial, username]);
       }
 
       setResults(results);
@@ -45,8 +41,7 @@ const Search = () => {
 
   const borrarHistorial = () => {
     setHistorial([]);
-    setResults([]); // Limpiar también los resultados
-    // También puedes llamar a una función para borrar el historial en el backend
+    setResults([]);
   };
 
   return (
@@ -59,22 +54,29 @@ const Search = () => {
         onChange={(e) => setUsername(e.target.value)}
       />
 
-      <select value={language} onChange={(e) => setLanguage(e.target.value)}>
-        <option value="">Elija Lenguaje</option>
-        <option value="JavaScript">JavaScript</option>
-        <option value="TypeScript">TypeScript</option>
-        <option value="CSS">CSS</option>
+      <select onChange={(e) => setSearchType(e.target.value)}>
+        <option value="repositories">Repositories</option>
+        <option value="users">Users</option>
       </select>
 
-      <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-        <option value="">Odenar por</option>
-        <option value="updated">Recientemente Actualizado</option>
-        <option value="stars">Estrellas</option>
-      </select>
+      {searchType === 'repositories' && (
+        <>
+          <select value={language} onChange={(e) => setLanguage(e.target.value)}>
+            <option value="">Elija Lenguaje</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="TypeScript">TypeScript</option>
+            <option value="CSS">CSS</option>
+          </select>
 
-      <Button onClick={handleSearch}> Buscar</Button>
+          <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+            <option value="">Ordenar por</option>
+            <option value="updated">Recientemente Actualizado</option>
+            <option value="stars">Estrellas</option>
+          </select>
+        </>
+      )}
 
-      {/* Agrega el componente SearchHistory */}
+      <Button onClick={handleSearch}>Buscar</Button>
       <SearchHistory historial={historial} onBorrarHistorial={borrarHistorial} onBuscar={(term) => setUsername(term)} />
     </div>
   );
