@@ -1,8 +1,8 @@
 :root {
-  --verde: rgb(5, 255, 5);
-  --darkgreen: #47925e;
-  --lightgreen: #09f03b;
-  --yellow: #eff304;
+  --primary: rgb(5, 255, 5);
+  --secondary: #47925e;
+  --tertiary: #09f03b;
+  --quaternary: #eff304;
 }
 
 * {

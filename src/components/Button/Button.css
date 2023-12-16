@@ -1,5 +1,5 @@
  .custom-btn {
-     background-color: var(--darkgreen);
+     background-color: var(--secondary);
      color: white;
      padding: 10px 15px;
      border: none;
@@ -10,5 +10,5 @@
  }
 
  .custom-btn:hover {
-     background-color: var(--lightgreen);
+     background-color: var(--tertiary);
  }
