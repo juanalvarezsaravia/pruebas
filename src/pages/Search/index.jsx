@@ -9,9 +9,9 @@ import { setSearch } from '../../api/search';
 
 const Search = () => {
   const [username, setUsername] = useState('');
-  
+
   const navigate = useNavigate();
-  const { setResults, language, setLanguage, sortBy, setSortBy, historial, setHistorial, refresh , searchType, setSearchType } = useContext(SearchContext);
+  const { setResults, language, setLanguage, sortBy, setSortBy, historial, setHistorial, refresh, searchType, setSearchType } = useContext(SearchContext);
 
   const handleSearch = async () => {
     try {

@@ -3,6 +3,7 @@
   --secondary: #47925e;
   --tertiary: #09f03b;
   --quaternary: #eff304;
+  --quinary: greenyellow;
 }
 
 * {
@@ -15,7 +16,8 @@
 
 body {
   box-sizing: border-box;
-  background-color: greenyellow;
+  background-color: var(--quinary);
+  ;
   height: 100%;
   margin: 0;
 }
