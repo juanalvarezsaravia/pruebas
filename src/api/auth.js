@@ -46,6 +46,9 @@ export function register({ email, password, name }) {
 
             const urlencoded = JSON.stringify({ email, password, name })
             const response = await fetch(path, {
+                headers: {
+                    "Content-Type": "application/json"
+                },
                 method: 'POST',
                 body: urlencoded,
                 redirect: 'follow',
