@@ -1,18 +1,18 @@
 import { STORAGE } from '../helpers/storage';
 import { USER_STORAGE_KEY } from '../constants/storage-keys';
 import { API_URL } from './config';
-import { CircularProgress, Fab } from '@mui/material';
 
 export function login({ email, password }) {
     return new Promise(async (resolve, reject) => {
         try {
             const path = `${API_URL}/user/login`;
 
-            const urlencoded = new URLSearchParams();
-            urlencoded.append('email', email);
-            urlencoded.append('password', password);
+            const urlencoded = JSON.stringify({email, password})
 
             const response = await fetch(path, {
+                headers: {
+                    "Content-Type": "application/json"
+                },
                 method: 'POST',
                 body: urlencoded,
                 redirect: 'follow',
@@ -44,11 +44,7 @@ export function register({ email, password, name }) {
         try {
             const path = `${API_URL}/user`;
 
-            const urlencoded = new URLSearchParams();
-            urlencoded.append('name', name);
-            urlencoded.append('email', email);
-            urlencoded.append('password', password);
-
+            const urlencoded = JSON.stringify({ email, password, name })
             const response = await fetch(path, {
                 method: 'POST',
                 body: urlencoded,

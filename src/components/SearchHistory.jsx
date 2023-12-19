@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import './SearchHistory.css';
 import { SearchContext } from '../SearchContext';
 import { FaTrash } from 'react-icons/fa';
+import { deleteSearch } from '../api/search';
 
 const formatDate = (date) => {
   const options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' };
@@ -37,11 +38,11 @@ const SearchHistory = () => {
           <li key={index} className="historial-item">
             <div>
               <span className="historial-texto" onClick={() => setResults([item])}>
-                {item}
+                {item.username}
               </span>
               <span className="historial-fecha">{formatDate(new Date())}</span>
             </div>
-            <span className="borrar-elemento" onClick={() => handleBorrarElemento(index)}>
+            <span className="borrar-elemento" onClick={() => handleBorrarElemento(item._id)}>
               <FaTrash />
             </span>
           </li>

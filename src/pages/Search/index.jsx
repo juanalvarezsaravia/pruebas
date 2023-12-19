@@ -19,7 +19,7 @@ const Search = () => {
       let query = `${baseUrl}${searchType}?q=${username}`;
 
       if (language && searchType === 'repositories') {
-        query += `+language:${language}`;
+        query += `&language=${language}`;
       }
 
       if (sortBy && searchType === 'repositories') {
@@ -37,7 +37,7 @@ const Search = () => {
           searchType,
           sortBy
         };
-        setSearch({ data: body })
+        await setSearch({ data: body })
         refresh();
       }
 

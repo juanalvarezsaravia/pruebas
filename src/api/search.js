@@ -16,8 +16,7 @@ export function getSearches() {
             const data = await response.json();
 
             if (data?.status === 'ERROR') throw new Error(data.message);
-
-            resolve(data || []);
+            resolve(response.ok ? data : []);
         } catch (error) {
             console.error(error);
             reject('Error en la petición.');
@@ -53,17 +52,12 @@ export function setSearch({ data, id = null }) {
             const path = `${API_URL}/search${id ? `/${id}` : ''}`;
             const { token } = await STORAGE.get(USER_STORAGE_KEY);
 
-            const urlencoded = new URLSearchParams();
-
-            const entries = Object.entries(data);
-
-            entries.forEach(([key, value]) => {
-                urlencoded.append(key, value);
-            });
+            const urlencoded = JSON.stringify(data)
 
             const response = await fetch(path, {
                 method: id ? 'PUT' : 'POST',
                 headers: {
+                    "Content-Type": "application/json",
                     'auth-token': token,
                 },
                 body: urlencoded,

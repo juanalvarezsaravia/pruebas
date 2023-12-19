@@ -1,5 +1,6 @@
 // SearchContext.jsx
 import React, { createContext, useState, useEffect } from 'react';
+import { getSearches } from './api/search';
 
 export const SearchContext = createContext();
 
@@ -13,9 +14,9 @@ export const SearchProvider = ({ children }) => {
 
 
   // Definir la función getSearches
-  async function getSearches() {
-    // Aquí va tu lógica para obtener las búsquedas
-  }
+  // async function getSearches() {
+  //   // Aquí va tu lógica para obtener las búsquedas
+  // }
 
   useEffect(() => {
     getSearches().then((data) => {
