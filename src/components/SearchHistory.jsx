@@ -1,4 +1,3 @@
-// components/SearchHistory.jsx
 import React, { useContext } from 'react';
 import './SearchHistory.css';
 import { SearchContext } from '../SearchContext';
@@ -11,12 +10,20 @@ const formatDate = (date) => {
 };
 
 const SearchHistory = () => {
-  const { historial, setHistorial, refresh } = useContext(SearchContext);
+  const { historial, setHistorial, refresh,setSearch } = useContext(SearchContext);
 
   const handleBorrarElemento = async (id) => {
     await deleteSearch({ id })
     refresh();
   };
+  const handleEdit = async ({id, username}) => 
+  {
+    const body = {
+      username
+    };
+    await setSearch({ id, data: body })
+    refresh();
+  }
 
   return (
     <div className="historial-container">
@@ -35,6 +42,10 @@ const SearchHistory = () => {
             <span className="borrar-elemento" onClick={() => handleBorrarElemento(item._id)}>
               <FaTrash />
             </span>
+              <span className="borrar-elemento" onClick={() => handleEdit({id:item._id,username:"aqui va el upDate"})}>
+              <FaTrash />
+            </span>
+            
           </li>
         ))}
       </ul>

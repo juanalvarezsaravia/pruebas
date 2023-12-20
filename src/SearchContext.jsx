@@ -1,6 +1,6 @@
 // SearchContext.jsx
 import React, { createContext, useState, useEffect } from 'react';
-import { getSearches } from './api/search';
+import { getSearches, setSearch } from './api/search';
 
 export const SearchContext = createContext();
 
@@ -44,8 +44,9 @@ export const SearchProvider = ({ children }) => {
         setHistorial,
         resultsCount, // Agregar resultsCount al contexto
         setResultsCount, // Agregar setResultsCount al contexto
-        searchType, 
+        searchType,
         setSearchType,
+        setSearch,
       }}
     >
       {children}
