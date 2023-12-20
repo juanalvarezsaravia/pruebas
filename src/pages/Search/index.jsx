@@ -66,6 +66,7 @@ const Search = () => {
       />
 
       <select onChange={(e) => setSearchType(e.target.value)}>
+        <option value="" selected disabled >Choose here</option>
         <option value="repositories">Repositories</option>
         <option value="users">Users</option>
       </select>

@@ -59,7 +59,8 @@ const Results = () => {
             <ul>
                 {filteredResults.map((result) => (
                     <li key={result.id}>
-                        <Link to={`/details/${result.login}`}>{result[propertyName]}</Link>
+                        
+                        <Link to={`/details/${result.login || result.name}`}>{result[propertyName]}</Link>
                     </li>
                 ))}
             </ul>
