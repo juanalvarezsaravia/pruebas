@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Button from '../../components/Button';
@@ -12,7 +12,8 @@ const Details = () => {
     useEffect(() => {
         const fetchRepoDetails = async () => {
             try {
-                const response = await axios.get(`https://api.github.com/repositories/${id}`);
+                const urluser = `https://api.github.com/users/${id}`;
+                const response = await axios.get(urluser);
                 setRepoDetails(response.data);
             } catch (error) {
                 console.error(error);

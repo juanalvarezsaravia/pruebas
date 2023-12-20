@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
 import Pagination from '@mui/material/Pagination';
@@ -59,7 +59,7 @@ const Results = () => {
             <ul>
                 {filteredResults.map((result) => (
                     <li key={result.id}>
-                        <Link to={`/details/${result.id}`}>{result[propertyName]}</Link>
+                        <Link to={`/details/${result.login}`}>{result[propertyName]}</Link>
                     </li>
                 ))}
             </ul>
