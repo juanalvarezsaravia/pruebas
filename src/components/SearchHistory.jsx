@@ -18,20 +18,10 @@ const SearchHistory = () => {
     refresh();
   };
 
-  const handleBorrarTodo = () => {
-    setResults([]);
-    setHistorial([]);
-  };
-
   return (
     <div className="historial-container">
       <h2>
         Historial de Búsquedas
-        {historial?.length > 0 && (
-          <span className="borrar-historial" onClick={handleBorrarTodo}>
-            <FaTrash />
-          </span>
-        )}
       </h2>
       <ul className="historial-list">
         {historial?.map((item, index) => (

@@ -53,13 +53,6 @@
   color: #721c24;
 }
 
-.borrar-historial {
-  cursor: pointer;
-  margin-left: 5px;
-  color: #dc3545;
-  transition: color 0.3s;
-}
-
 .borrar-historial:hover {
   color: #721c24;
 }
