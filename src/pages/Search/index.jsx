@@ -65,11 +65,12 @@ const Search = () => {
         onChange={(e) => setUsername(e.target.value)}
       />
 
-      <select onChange={(e) => setSearchType(e.target.value)}>
-        <option value="" selected disabled >Choose here</option>
-        <option value="repositories">Repositories</option>
-        <option value="users">Users</option>
-      </select>
+      <select value={searchType} onChange={(e) => setSearchType(e.target.value)}>
+  <option value="" disabled>Choose here</option>
+  <option value="repositories">Repositories</option>
+  <option value="users">Users</option>
+</select>
+
 
       {searchType === 'repositories' && (
         <>
