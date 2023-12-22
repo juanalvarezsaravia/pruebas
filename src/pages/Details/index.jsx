@@ -12,8 +12,8 @@ const Details = () => {
     useEffect(() => {
         const fetchRepoDetails = async () => {
             try {
-                const urluser = `https://api.github.com/users/${id}`;
-                const response = await axios.get(urluser);
+                const urlsearchType = `https://api.github.com/users/${id}`;
+                const response = await axios.get(urlsearchType);
                 setRepoDetails(response.data);
             } catch (error) {
                 console.error(error);
